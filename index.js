@@ -17,27 +17,52 @@ const buyIceCream = ()=> {
 }
 
 //initial State
-const initialState = {
-  numOfCakes: 10,
-  numOfIcecreame: 20
-};
+// const initialState = {
+//   numOfCakes: 10,
+//   numOfIcecreames: 20
+// };
+
+const initialCakeState = {
+  numOfCakes: 10
+}
+
+const initialICeCreamState = {
+  numOfIcecreames: 20
+}
 
 // (preveState, action) => newState
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case BUY_CAKE:
-      return {
-        ...state,
-        numOfCakes: state.numOfCakes - 1,
-      };
-      case BUY_ICECREAME: return {
-        ...state,
-        numOfIcecreame: state.numOfIcecreame - 1
-      } 
-    default:
-      return state;
+// const reducer = (state = initialState, action) => {
+//   switch (action.type) {
+//     case BUY_CAKE:
+//       return {
+//         ...state,
+//         numOfCakes: state.numOfCakes - 1,
+//       };
+//       case BUY_ICECREAME: return {
+//         ...state,
+//         numOfIcecreames: state.numOfIcecreames - 1
+//       } 
+//     default:
+//       return state;
+//   }
+// };
+
+const cakeReducer = (state = initialCakeState, action)=> {
+  switch(action.type){
+    case BUY_CAKE: return {
+      ...state,
+      numOfCakes: state.numOfCakes - 1
+    }
   }
-};
+}
+
+const iceCreamReducer = (state = initialICeCreamState, action)=> {
+  switch(action.type){
+    case BUY_ICECREAME: return {
+      numOfIcecreames: state.numOfIcecreames - 1
+    }
+  }
+}
 
 const store = createStore(reducer)
 console.log('Initial state', store.getState())
